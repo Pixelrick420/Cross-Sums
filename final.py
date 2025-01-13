@@ -1,42 +1,24 @@
-from random import randint, shuffle
+import random
 import copy
 
 class Board:
     def __init__(self, n):
-        self.n = n
+        self.n = 8
         self.answer = set()
-        self.rowSums = [0] * n
-        self.colSums = [0] * n
-        self.matrix = [[randint(1, 9) for _ in range(n)] for _ in range(n)]
-        self.answerCopy = copy.deepcopy(self.matrix)
-        self.genAns = self.generateAnswer()
+        self.rowSums = [13,23,24,5,9,5,16,2]
+        self.colSums = [4,8,15,10,3,16,16,25]
+        self.matrix = [
+                    [4,2,5,6,3,2,6,5],
+                    [1,2,9,5,6,3,5,2],
+                    [4,2,6,3,5,7,5,4],
+                    [2,1,9,3,4,5,1,8],
+                    [2,3,8,8,5,7,2,6],
+                    [6,5,5,3,5,5,4,5],
+                    [5,1,1,5,1,2,9,7],
+                    [7,2,4,2,2,4,1,6]
+                ]
         
         self.answerCopy = copy.deepcopy(self.matrix)
-        
-    def generateAnswer(self):
-        answer = set()
-        for i in range(self.n):
-            for j in range(self.n):
-                if randint(1, 10) <= 2:
-                    answer.add((i, j))
-                    self.rowSums[i] += self.matrix[i][j]
-                    self.colSums[j] += self.matrix[i][j]
-        
-        rows = list(range(self.n))
-        cols = set(range(self.n))
-        
-        rows = [i for i in range(self.n)]
-        cols = [i for i in range(self.n)]
-        shuffle(rows)
-        shuffle(cols)
-        for _ in range(self.n):
-            i = rows.pop()
-            j = cols.pop()
-            if (i, j) not in answer:
-                answer.add((i, j))
-                self.rowSums[i] += self.matrix[i][j]
-                self.colSums[j] += self.matrix[i][j]
-        return answer
         
     def display(self) -> None:
         print('\n')
