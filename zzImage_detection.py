@@ -6,7 +6,7 @@ import numpy as np
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 # Load the image
-image_path = "matrix.jpg"  # Update this with the correct path
+image_path = "zmatrix.jpg"  # Update this with the correct path
 image = cv2.imread(image_path)
 
 if image is None:
